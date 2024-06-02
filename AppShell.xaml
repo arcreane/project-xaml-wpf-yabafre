@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:MauiHangmanGames.Views"
+       x:Class="MauiHangmanGames.AppShell">
+
+    <!-- Définir les routes nommées pour les pages -->
+    <ShellContent Title="Accueil" ContentTemplate="{DataTemplate local:HomePage}" Route="homePage"/>
+    <ShellContent Title="Login Joueur" ContentTemplate="{DataTemplate local:PlayerLoginPage}" Route="playerLogin"/>
+    <ShellContent Title="Jeu de Pendu" ContentTemplate="{DataTemplate local:GamePage}" Route="gamePage"/>
+</Shell>

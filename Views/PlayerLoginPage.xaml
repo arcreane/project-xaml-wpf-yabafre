@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiHangmanGames.Views.PlayerLoginPage"
+             Title="Login Joueur">
+    <StackLayout Padding="20">
+        <Label Text="Entrez votre nom de joueur" 
+               FontSize="Medium" 
+               HorizontalOptions="Center" />
+        <Entry x:Name="PlayerNameEntry" 
+               Placeholder="Nom du joueur" 
+               HorizontalOptions="FillAndExpand" />
+        <Button Text="Commencer"
+                Clicked="OnStartGameClicked"
+                HorizontalOptions="FillAndExpand" />
+    </StackLayout>
+</ContentPage>

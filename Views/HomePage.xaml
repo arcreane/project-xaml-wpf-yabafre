@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiHangmanGames.Views.HomePage"
+             Title="Accueil">
+    <StackLayout Padding="20">
+        <Label Text="Jeu de Pendu" 
+               FontSize="Large" 
+               HorizontalOptions="Center" />
+
+        <Button Text="Mode Classique"
+                Clicked="OnModeClassiqueClicked"
+                HorizontalOptions="FillAndExpand" />
+
+        <Button Text="Mode Duel"
+                Clicked="OnModeDuelClicked"
+                HorizontalOptions="FillAndExpand" />
+
+        <Button Text="Mode Survie"
+                Clicked="OnModeSurvieClicked"
+                HorizontalOptions="FillAndExpand" />
+
+        <Label Text="Meilleurs Scores"
+               FontSize="Medium"
+               Margin="20, 20, 20, 5"
+               HorizontalOptions="Center" />
+
+        <ListView x:Name="LeaderboardListView"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding PlayerName}" 
+                              Detail="{Binding Score}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
