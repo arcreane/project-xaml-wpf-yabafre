@@ -1,0 +1,8 @@
+/bin
+/.vs
+/obj
+node_modules
+
+package-lock.json
+package.json
+readStructure.mjs

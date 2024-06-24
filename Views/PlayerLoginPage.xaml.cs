@@ -3,10 +3,10 @@ using System;
 
 namespace MauiHangmanGames.Views
 {
-    [QueryProperty(nameof(ModeDeJeu), "ModeDeJeu")]
+    [QueryProperty(nameof(GameMode), "GameMode")]
     public partial class PlayerLoginPage : ContentPage
     {
-        public string ModeDeJeu { get; set; } = string.Empty;
+        public string GameMode { get; set; } = string.Empty;
 
         public PlayerLoginPage()
         {
@@ -16,7 +16,7 @@ namespace MauiHangmanGames.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            // Utiliser le ModeDeJeu pour configurer la page si nécessaire
+            // Utiliser le GameMode pour configurer la page si nécessaire
         }
 
         private async void OnStartGameClicked(object sender, EventArgs e)
@@ -24,7 +24,7 @@ namespace MauiHangmanGames.Views
             var playerName = PlayerNameEntry.Text;
             if (!string.IsNullOrEmpty(playerName))
             {
-                await Shell.Current.GoToAsync($"///gamePage?PlayerName={playerName}&ModeDeJeu={ModeDeJeu}");
+                await Shell.Current.GoToAsync($"///gamePage?PlayerName={playerName}&GameMode={GameMode}");
             }
             else
             {

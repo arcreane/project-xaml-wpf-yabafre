@@ -5,7 +5,7 @@ namespace MauiHangmanGames.Services
 {
     public class GestionnaireDePartie
     {
-        public Game PartieCourante { get; private set; }
+        public Game? PartieCourante { get; private set; }
 
         public void InitialiserPartieClassique(Player player)
         {

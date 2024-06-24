@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace HangmanGames;
+namespace MauiHangmanGames;
 
 [Application]
 public class MainApplication : MauiApplication

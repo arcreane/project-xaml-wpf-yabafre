@@ -13,6 +13,15 @@ namespace MauiHangmanGames.Data
         public HangmanDbContext(DbContextOptions<HangmanDbContext> options)
             : base(options)
         {
+            try
+            {
+                // Toute logique d'initialisation spécifique
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in HangmanDbContext constructor: {ex.Message}");
+                throw;
+            }
         }
 
         public DbSet<Category> Categories { get; set; }
@@ -24,9 +33,12 @@ namespace MauiHangmanGames.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseNpgsql("Host=localhost;Database=hangmangame;Username=postgres;Password=leonepiecedelufy")
-                .LogTo(Console.WriteLine, LogLevel.Information);
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder
+                    .UseNpgsql("Host=ep-broad-lab-a251k1b8-pooler.eu-central-1.aws.neon.tech;Database=verceldb;Username=default;Password=Xpa4VKikJN5O")
+                    .LogTo(Console.WriteLine, LogLevel.Information);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using MauiHangmanGames.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MauiHangmanGames
 {
@@ -20,15 +21,15 @@ namespace MauiHangmanGames
                 });
 
             // Enregistre les services
-            builder.Services.AddDbContext<HangmanDbContext>();
+            builder.Services.AddDbContext<HangmanDbContext>(options =>
+                    options.UseNpgsql("Host=ep-broad-lab-a251k1b8-pooler.eu-central-1.aws.neon.tech;Database=verceldb;Username=default;Password=Xpa4VKikJN5O"));
             builder.Services.AddTransient<LeaderboardService>();
             builder.Services.AddSingleton<GameService>();
             builder.Services.AddSingleton<GestionnaireDePartie>();
 
-            // Crée l'application et assigne les services
+            // Crée l'application
             var app = builder.Build();
-            App.Services = app.Services;
-
+            
             return app;
         }
     }

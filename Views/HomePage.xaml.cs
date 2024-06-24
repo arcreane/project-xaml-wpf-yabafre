@@ -32,7 +32,7 @@ namespace MauiHangmanGames.Views
         {
             await Shell.Current.GoToAsync("///playerLogin", true, new Dictionary<string, object>
             {
-                { "ModeDeJeu", "Classique" }
+                { "GameMode", "Classique" }
             });
         }
 
@@ -40,7 +40,7 @@ namespace MauiHangmanGames.Views
         {
             await Shell.Current.GoToAsync("///playerLogin", true, new Dictionary<string, object>
             {
-                { "ModeDeJeu", "Duel" }
+                { "GameMode", "Duel" }
             });
         }
 
@@ -48,7 +48,7 @@ namespace MauiHangmanGames.Views
         {
             await Shell.Current.GoToAsync("///playerLogin", true, new Dictionary<string, object>
             {
-                { "ModeDeJeu", "Survie" }
+                { "GameMode", "Survie" }
             });
         }
     }

@@ -8,7 +8,7 @@ namespace MauiHangmanGames.ViewModels
     public class PlayerLoginViewModel : BaseViewModel
     {
         private string? _playerName;
-        private ModeDeJeu? _modeDeJeu;
+        private GameMode? _GameMode;
 
         public string? PlayerName
         {
@@ -16,10 +16,10 @@ namespace MauiHangmanGames.ViewModels
             set => SetProperty(ref _playerName, value);
         }
 
-        public ModeDeJeu? ModeDeJeu
+        public GameMode? GameMode
         {
-            get => _modeDeJeu;
-            set => SetProperty(ref _modeDeJeu, value);
+            get => _GameMode;
+            set => SetProperty(ref _GameMode, value);
         }
 
         public ICommand LoginCommand { get; }
@@ -37,10 +37,10 @@ namespace MauiHangmanGames.ViewModels
             var gameService = App.Services.GetService<GameService>();
             var player = await gameService.AuthenticateOrCreatePlayerAsync(PlayerName);
 
-            await Shell.Current.GoToAsync($"//MainPage", new Dictionary<string, object>
+            await Shell.Current.GoToAsync($"//GamePage", new Dictionary<string, object>
             {
                 { "Player", player },
-                { "ModeDeJeu", ModeDeJeu }
+                { "GameMode", GameMode }
             });
         }
     }

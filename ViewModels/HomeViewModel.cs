@@ -12,26 +12,31 @@ namespace MauiHangmanGames.ViewModels
         public ObservableCollection<LeaderboardEntry> LeaderboardEntries { get; set; }
         public ICommand SelectModeCommand { get; }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         public HomeViewModel()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
+#pragma warning disable CS8601 // Possible null reference assignment.
             _gameService = App.Services.GetService<GameService>();
-            LeaderboardEntries = new ObservableCollection<LeaderboardEntry>((IEnumerable<LeaderboardEntry>)_gameService.GetLeaderboardAsync());
+#pragma warning restore CS8601 // Possible null reference assignment.
+            LeaderboardEntries = new ObservableCollection<LeaderboardEntry>();
             SelectModeCommand = new Command<string>(OnSelectMode);
+            LoadLeaderboardAsync();
         }
 
-        private async void OnSelectMode(string modeDeJeu)
+        private async void OnSelectMode(string GameMode)
         {
-            ModeDeJeu mode;
-            switch (modeDeJeu)
+            GameMode mode;
+            switch (GameMode)
             {
                 case "Classique":
-                    mode = new ModeDeJeuClassique();
+                    mode = new GameModeClassique();
                     break;
                 case "Duel":
-                    mode = new ModeDeJeuDuel();
+                    mode = new GameModeDuel();
                     break;
                 case "Survie":
-                    mode = new ModeDeJeuSurvie();
+                    mode = new GameModeSurvie();
                     break;
                 default:
                     return;
@@ -39,8 +44,18 @@ namespace MauiHangmanGames.ViewModels
 
             await Shell.Current.GoToAsync($"//PlayerLoginPage", new Dictionary<string, object>
             {
-                { "ModeDeJeu", mode }
+                { "GameMode", mode }
             });
+        }
+
+        private async void LoadLeaderboardAsync()
+        {
+            var entries = await _gameService.GetLeaderboardAsync();
+            LeaderboardEntries.Clear();
+            foreach (var entry in entries)
+            {
+                LeaderboardEntries.Add(entry);
+            }
         }
     }
 }

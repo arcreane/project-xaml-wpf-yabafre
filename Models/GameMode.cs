@@ -2,7 +2,7 @@ using MauiHangmanGames.Services;
 
 namespace MauiHangmanGames.Models
 {
-    public abstract class ModeDeJeu
+    public abstract class GameMode
     {
         public abstract string Nom { get; }
         public abstract int ViesInitiales { get; }
@@ -10,7 +10,7 @@ namespace MauiHangmanGames.Models
         public abstract void InitialiserPartie(GestionnaireDePartie gestionnaire, Player player);
     }
 
-    public class ModeDeJeuClassique : ModeDeJeu
+    public class GameModeClassique : GameMode
     {
         public override string Nom => "Classique";
         public override int ViesInitiales => 6;
@@ -21,7 +21,7 @@ namespace MauiHangmanGames.Models
         }
     }
 
-    public class ModeDeJeuDuel : ModeDeJeu
+    public class GameModeDuel : GameMode
     {
         public override string Nom => "Duel";
         public override int ViesInitiales => 6;
@@ -32,7 +32,7 @@ namespace MauiHangmanGames.Models
         }
     }
 
-    public class ModeDeJeuSurvie : ModeDeJeu
+    public class GameModeSurvie : GameMode
     {
         public override string Nom => "Survie";
         public override int ViesInitiales => 1;

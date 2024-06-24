@@ -8,7 +8,7 @@ namespace MauiHangmanGames.Models
         public List<char> LettresDevinees { get; set; } = new List<char>();
         public int NombreDeVies { get; set; }
         public int PlayerId { get; set; }
-        public Player Player { get; set; }
+        public required Player Player { get; set; }
         public string GameMode { get; set; } = string.Empty;
         public DateTime DateAt { get; set; }
 

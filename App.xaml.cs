@@ -1,14 +1,14 @@
 ﻿using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Xaml;
 
 namespace MauiHangmanGames
 {
     public partial class App : Application
     {
-        public static IServiceProvider Services { get; set; }
+        public static IServiceProvider? Services { get; private set; }
 
-        public App()
+        public App(IServiceProvider serviceProvider)
         {
+            Services = serviceProvider;
             InitializeComponent();
             MainPage = new AppShell();
         }

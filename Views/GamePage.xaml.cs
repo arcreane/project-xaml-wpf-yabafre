@@ -6,11 +6,11 @@ using System.Collections.Generic;
 namespace MauiHangmanGames.Views
 {
     [QueryProperty(nameof(PlayerName), "PlayerName")]
-    [QueryProperty(nameof(ModeDeJeu), "ModeDeJeu")]
+    [QueryProperty(nameof(GameMode), "GameMode")]
     public partial class GamePage : ContentPage
     {
         public string PlayerName { get; set; } = string.Empty;
-        public string ModeDeJeu { get; set; } = string.Empty;
+        public string GameMode { get; set; } = string.Empty;
 
         private string wordToGuess = string.Empty;
         private int lives;
@@ -19,8 +19,14 @@ namespace MauiHangmanGames.Views
         public GamePage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             SetupGame();
         }
+
 
         private void SetupGame()
         {
